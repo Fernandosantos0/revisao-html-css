@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trabalhando com o comando swhitch</title>
+        <!-- favicon -->
+		<link rel="shortcut icon" type="image/" href="https://cdn.iconscout.com/icon/free/png-256/javascript-23-1174949.png">
+        <!-- css -->
+        <style rel="stylesheet" type="text/css">
+
+            /* Google Fonts */
+
+            /* Fonte Hind Siliguri */
+            @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+            /* Fonte Ubuntu */
+            @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+            :root { /* Variáveis css */
+                font-size: 62.5%;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+                padding: 0;
+                font-size: 1.6rem;
+                background: hsl(356, 22%, 50%) url(./images/bg-fundo.jpg) no-repeat;
+            }
+
+            button {
+                display: block;
+                margin-block-start: 5px;
+            }
+
+            section#formulario:nth-of-type(1) {
+                width: 50rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                padding-inline: 2rem;
+                padding-block: 2rem;
+                background-color: #fff;
+                border-radius: 1.5rem;
+            }
+
+            fieldset {
+                border: 0;
+            }
+
+            legend {
+                text-align: center;
+                font-weight: 600;
+                margin-bottom: .9rem;
+                font-size: 1.9rem;
+                font-family: 'Hind Siliguri', arial, sans-serif;
+            }
+
+            input[type="number"] {
+                width: 9rem;
+            }
+
+            input[type="number"]:focus {
+                outline: 0;
+            }
+
+            div#resultado > h3 {
+                text-align: center;
+            }
+
+            label,
+            p {
+                font-family: 'Ubuntu', sans-serif;
+            }
+
+            p {
+                color: green;
+            }
+
+            .oculta {
+                display: none;
+            }
+
+            button[type='button'] {
+                margin-inline: auto;
+                padding: 0.5rem 2rem;
+                font-size: 1.5rem;
+                font-weight: 400;
+                border-radius: 1rem;
+                border: 0;
+                background-color: rgb(22, 20, 20);
+                color: #fff;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>        
+        <!-- formulário -->
+        <section id="formulario">
+            <form action="cadastrar.php" method="post" id="form">
+
+                <fieldset>
+                    <legend>Selecione um número</legend>
+
+                    <label for="campoNum">Número:</label>
+                    <input type="number" id="campoNum" name="num" placeholder="0" min="0">
+
+                    <!-- Botão -->
+                    <button type="button" onclick="capturar()">
+                        Enviar
+                    </button>
+                </fieldset>
+
+            </form>
+
+            <!-- Mostrar o resultado -->
+            <div id="resultado" class="oculta">
+                <h3>Resultado</h3>
+                <p></p>
+            </div>
+        </section>
+
+        <!-- JavaScript -->
+        <script type="text/javascript">
+            const formulario = window.document.getElementById('form');
+            const numeroDigitado = window.document.getElementsByName('num');
+            const caixaResult = window.document.getElementById('resultado');
+            let result = window.document.querySelectorAll('div#resultado > p');
+
+            //Função para inpendi o submit do formulário
+            const submicaoForm = (evento) => {
+                evento.preventDefault();
+                alert("Você fez um submit do campo");
+            };
+
+            //Criando uma função para capturar o número digitado pelo usuário no formulário
+            const capturar = function() {
+                var digito = parseInt(numeroDigitado[0].value); //Pegando o valor e convertendo para número inteiro
+
+
+                //Estrutura condicional para determinar se variável está armazenando um valor NaN
+                if(isNaN(digito) === false) {
+                    caixaResult.classList.remove('oculta');
+                    switch(digito) {
+                        case 0:
+                            result[0].textContent = `Você escolheu o número zero (${digito})`;
+                        break;
+
+                        case 1:
+                            result[0].textContent = `Você digitou o número um (${digito})`;
+                        break;
+
+                        case 2: 
+                            result[0].textContent = `Você digitou o número dois (${digito})`;
+                        break;
+
+                        case 3: 
+                            result[0].textContent = `Você digitou o número três (${digito})`;
+                        break;
+
+                        case 4:
+                            result[0].textContent = `Você digitou o número quatro (${digito})`;
+                        break;
+
+                        case 5:
+                            result[0].textContent = `Você digitou o número cinco (${digito})`;
+                        break;
+                        
+                        default:
+                            result[0].textContent = `Você digitou um número maior que cinco. O número digitado foi ${digito}.`;
+                        break;
+                    }
+                } else {
+                    caixaResult.classList.remove('oculta');
+                    result[0].textContent = `Escolha um número!`;
+                }
+
+            };
+
+            //Escutando eventos JS
+            formulario.addEventListener('submit', submicaoForm);
+        </script>
+    </body>
+</html>

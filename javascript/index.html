@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Calculando Valor</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- favicon -->
+		<link rel="shortcut icon" type="image/" href="https://cdn.iconscout.com/icon/free/png-256/javascript-23-1174949.png">
+		<!-- css -->
+		<style type="text/css" rel="stylesheet" media="all">
+			@import url('./css/folhaEstilo.css');
+		</style>
+	</head>
+	<body>
+		<!-- Vídeo em background -->
+		<video src="./video/bg-fundo.mp4" preload="metadata" loop autoplay muted id="bg-video"></video>
+		
+		<section id="form-container">
+			
+			<header>
+				<h3>Calculando o somantório</h3>
+				<p>Digite os números nos campos do formulário para realizar o cálculo</p>
+			</header>
+
+			<form action="#" method="POST" accept-charset="UTF-8" autocomplete="off">
+				<div class="campos">
+					<label id="campoUm">1° Valor:</label>
+					<input type="text" name="campoN1" id="campoUm" placeholder="Digite aqui" required>
+				</div>
+
+				<div class="campos">
+					<label id="campoDois">2° Valor:</label>
+					<input type="text" name="campoN2" id="campoDois" placeholder="Digite aqui" required>
+				</div>
+
+				<div class="campos">
+					<label for="slcOperador">Operador:</label>
+					<select name="operador" id="slcOperador">
+						<option value="" disabled selected>Selecione o operador</option>
+						<option value="soma">Operador de soma</option>
+						<option value="subtracao">Operador de subtração</option>
+						<option value="multi">Operador de multiplicação</option>
+						<option value="divisao">Operador divisão</option>
+					</select>
+				</div>
+
+				<!-- Botão -->
+				<input type="button" id="btnLimpar" value="Limpar campos">
+				<input type="submit" id="btnCalcular" value="Calcular">
+ 
+			</form>
+
+			<div id="resultado" class="oculta"></div>
+
+		</section>
+
+		<!-- JavaScript -->
+		<script type="text/javascript" src="./js/script-calcular.js"></script>
+
+	</body>
+</html>
